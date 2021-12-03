@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adminsitración - Médicos</title>
+	<!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+     <!-- Morris Chart Styles-->
+   
+        <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin</a>
+            </div>
+            
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuraci&oacute;n</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="index.html"><i class="fa fa-dashboard"></i> Inicio</a>
+                    </li>
+                    <li>
+                        <a href="reservas.html"><i class="fa fa-desktop"></i> Reservas</a>
+                    </li>
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Mantenimiento<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="especialidades.html">Especialidades</a>
+                            </li>
+                            <li>
+                                <a href="medicos.html">M&eacute;dicos</a>
+                            </li>
+                            <li>
+                                <a href="horarios.html">Horarios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="configuracion.html"><i class="fa fa-fw fa-file"></i> Configuraci&oacute;n</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+
+        <!-- ###### INICIO PAGINA  ########-->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            M&eacute;dicos 
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+            
+                 <div class="row" style="margin-bottom: 10px;">
+                    <div class="p-5 col-md-12">
+                        <button class="btn btn-primary btn-sm" id="btnAgregar">
+                            + Agregar
+                        </button>
+                    </div>
+                 </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Listado
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-especialidad">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>M&eacute;dico</th>
+                                            <th>Especialidad</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+ 
+        </div>
+
+        
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Agregar/Editar</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <form role="form" autocomplete="off">
+                            <div class="form-group">
+                                <label>Apellido paterno</label>
+                                <input class="form-control" id="txt_apellido_paterno">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido materno</label>
+                                <input class="form-control" id="txt_apellido_materno">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombres</label>
+                                <input class="form-control" id="txt_nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>N&uacute;mero de documento</label>
+                                <input class="form-control" id="txt_numero_documento">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Especialidad</label>
+                                <select class="form-control" id="select_especialidad">
+                                </select>
+                            </div>
+
+                            <input type="hidden" id="idMedico" value="">
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="btnSave">Guardar Cambios</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="myModalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabelMensaje" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4><span id="lblMensaje"></span></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- ###### FIN PAGINA  ########-->
+               <footer><p>&nbsp;</p></footer>
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <!--<script src="//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"></script>-->
+    <!--<script src="https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"></script>-->
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
+            $(document).ready(function () {
+                //$('#dataTables-example').dataTable();
+                $.extend($.fn.dataTable.defaults, {
+                    //language: { url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json" }
+                });
+            });
+    </script>
+         <!-- Custom Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+    <script src="assets/js/custom-scripts.js"></script>
+    <script src="assets/js/app/medico.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            console.log("click al boton");
+            $('#main-menu .arrow').trigger("click", function(){alert('ok')});
+        });
+</script>
+
+</body>
+</html>
